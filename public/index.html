@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101211">
+  <title>Session Desk · Codex command center</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/controls.css">
+  <link rel="stylesheet" href="/sources.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Session Desk home"><img src="/icon.svg" alt="" width="34" height="34"><span>session desk<span class="brand-sub">YOUR CODEX COMMAND CENTER</span></span></a>
+    <div class="workspace"><span class="workspace-icon">⌘</span><div>Local workspace<small>Codex sessions</small></div><span class="local-tag">LOCAL</span></div>
+    <div class="nav-label">WORKSPACE</div>
+    <nav id="navigation" aria-label="Session filters">
+      <button data-filter="all" class="nav-item active"><span class="nav-icon">▦</span>All sessions<span class="nav-count" data-count="all">0</span></button>
+      <button data-filter="attention" class="nav-item"><span class="nav-icon amber">◉</span>Needs attention<span class="nav-count" data-count="attention">0</span></button>
+      <button data-filter="processing" class="nav-item"><span class="nav-icon blue">◌</span>Processing<span class="nav-count" data-count="processing">0</span></button>
+      <button data-filter="ready" class="nav-item"><span class="nav-icon green">✓</span>Response ready<span class="nav-count" data-count="ready">0</span></button>
+      <button data-filter="finished" class="nav-item"><span class="nav-icon">☑</span>Finished<span class="nav-count" data-count="finished">0</span></button>
+      <button data-filter="pinned" class="nav-item"><span class="nav-icon">☆</span>Pinned<span class="nav-count" data-count="pinned">0</span></button>
+    </nav>
+    <div class="sidebar-note"><span class="mini-terminal">&gt;_</span><strong>Keep your flow.</strong><p>Know what’s moving.<br>Catch what needs you.</p></div>
+    <footer class="sidebar-footer"><span class="connection-dot" id="sidebar-dot"></span><div id="sidebar-connection">Connecting to Codex<small>Local daemon · read only</small></div></footer>
+  </aside>
+  <main>
+    <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb">All sessions</strong></div><div class="top-actions"><span id="mode" class="mode-label">LOCAL</span><button id="notifications" class="button subtle" title="Notify when a session needs you or finishes a response">♧ <span>Enable notifications</span></button></div></header>
+    <div class="content">
+      <section class="heading"><div><div class="eyebrow"><span class="tiny-line"></span> A LITTLE LESS TAB SWITCHING</div><h1>Your agents, at a glance<span>.</span></h1><p>A quiet place to keep track of everything Codex is working on.</p></div><div class="live-status"><span class="connection-dot" id="live-dot"></span><span id="live-label">Connecting</span><small id="last-sync">Waiting for first sync</small></div></section>
+      <div id="banner" class="banner" role="status" hidden></div>
+      <section class="stats" aria-label="Session overview">
+        <button class="stat" data-filter="attention"><span class="stat-label"><span class="stat-dot amber-bg"></span>Needs attention<span class="stat-arrow">↗</span></span><strong id="stat-attention">0</strong><small>Waiting for your next move</small></button>
+        <button class="stat" data-filter="processing"><span class="stat-label"><span class="stat-dot blue-bg"></span>Processing<span class="stat-arrow">↗</span></span><strong id="stat-processing">0</strong><small>Making progress in the background</small></button>
+        <button class="stat" data-filter="ready"><span class="stat-label"><span class="stat-dot green-bg"></span>Response ready<span class="stat-arrow">↗</span></span><strong id="stat-ready">0</strong><small>A fresh result to review</small></button>
+        <button class="stat" data-filter="finished"><span class="stat-label"><span class="stat-dot gray-bg"></span>Finished<span class="stat-arrow">↗</span></span><strong id="stat-finished">0</strong><small>Reviewed and marked done by you</small></button>
+      </section>
+      <section class="sessions-section" aria-labelledby="sessions-heading">
+        <div class="section-title"><h2 id="sessions-heading">All sessions <span id="result-count">0</span></h2><span class="section-caption">A clear view. A calmer workflow.</span></div>
+        <div class="toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search sessions, projects, branches…" aria-label="Search sessions"><kbd>/</kbd></label><label class="select-wrap"><span class="sr-only">Source</span><select id="source"><option value="all">All sources</option><option value="codex">Codex</option><option value="claude">Claude Code</option></select></label><label class="select-wrap"><span class="sr-only">Project</span><select id="project"><option value="">All projects</option></select></label><label class="select-wrap"><span class="sr-only">Sort</span><select id="sort"><option value="attention">Attention first</option><option value="recent">Recently updated</option><option value="project">Project name</option></select></label><div class="view-toggle" aria-label="View"><button id="list-view" class="selected" aria-label="List view" aria-pressed="true">☰</button><button id="board-view" aria-label="Board view" aria-pressed="false">▥</button></div></div>
+        <div id="sessions" aria-live="polite"></div>
+        <div class="table-footer"><span id="shown-count">Connecting to your local Codex daemon…</span><span><span class="keyboard-hint">/</span> to search <span class="footer-separator">·</span> Updates every 3 seconds</span></div>
+      </section>
+      <div class="bottom-note"><span>◈</span> Built for parallel minds. <span class="bottom-note-right">Local sessions. Your machine. Your flow.</span></div>
+    </div>
+  </main>
+  <dialog id="detail" aria-labelledby="detail-title"><div class="detail-head"><span class="eyebrow">SESSION DETAILS</span><button id="close-detail" class="icon-button" aria-label="Close session details">✕</button></div><div id="detail-content"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

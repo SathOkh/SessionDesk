@@ -1,0 +1,16 @@
+/* Source tags: which tool a session comes from. */
+.source-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  font-size: 11px;
+  line-height: 1.6;
+  white-space: nowrap;
+  vertical-align: middle;
+  opacity: 0.85;
+}
+.source-tag.codex { color: #9cc3ff; }
+.source-tag.claude { color: #e9a77a; }
+.card-top .source-tag { margin-left: 0; }

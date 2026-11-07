@@ -1,0 +1,14 @@
+{
+  "name": "codex-session-desk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local, live command center for Codex sessions",
+  "engines": { "node": ">=22.8" },
+  "scripts": {
+    "start": "node server.mjs",
+    "demo": "node server.mjs --demo",
+    "test": "node --test --test-isolation=none test/*.test.mjs",
+    "check": "node --check server.mjs && node --check lib/codex.mjs && node --check lib/websocket.mjs && node --check lib/terminal.mjs && node --check lib/demo.mjs && node --check lib/claude.mjs && node --check lib/composite.mjs && node --check public/app.js && node --check public/state.js"
+  }
+}
