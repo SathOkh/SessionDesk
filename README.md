@@ -2,6 +2,8 @@
 
 A local browser dashboard for Codex and Claude Code: see what is processing, waiting for input or approval, ready to review, or finished, across both tools in one list. No packages, API keys, or build step required.
 
+<img width="2520" height="1264" alt="2026-11-07_21-32" src="https://github.com/user-attachments/assets/86871b25-6510-4aae-afcd-f1a163b4cb50" />
+
 ## Run
 
 Requires **Node.js 22.8+** and a recent **Codex CLI** with `codex app-server proxy` support. Developed against Codex CLI 0.166.0–0.167.0.
